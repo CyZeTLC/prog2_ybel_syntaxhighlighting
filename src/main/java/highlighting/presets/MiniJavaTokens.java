@@ -23,6 +23,9 @@ public final class MiniJavaTokens {
                         Pattern.compile("\"([^\"\\\\]|\\\\.)*\""),
                         MiniJavaColours.STRING_LITERAL_COLOUR),
 
+                // Line comments
+                Token.of(Pattern.compile("//.*"), MiniJavaColours.LINE_COMMENT_COLOUR),
+
                 // annotations, comments, identifiers, numbers, operators, etc.
                 Token.of(
                         Pattern.compile("\"([^\"\\\\]|\\\\.)*\""),
@@ -51,9 +54,6 @@ public final class MiniJavaTokens {
                 // Block comments
                 Token.of(
                         Pattern.compile("/\\*([\\s\\S]*?)\\*/"),
-                        MiniJavaColours.BLOCK_COMMENT_COLOUR),
-
-                // Line comments
-                Token.of(Pattern.compile("//.*"), MiniJavaColours.LINE_COMMENT_COLOUR));
+                        MiniJavaColours.BLOCK_COMMENT_COLOUR));
     }
 }
