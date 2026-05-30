@@ -15,17 +15,19 @@ import java.util.*;
 // as is, and {@code normalize} should be overridden as the identity function.
 public class ScanningHighlighter extends SyntaxHighlighter {
 
-  // TODO: Implement the scanning-based matching strategy here. Iterate from left to right over the
-  // input, determine the best matching token at each position, and collect all resulting highlight
-  // regions in order.
-  @Override
-  public List<HighlightRegion> collectMatches(String text) {
-    throw new UnsupportedOperationException("not implemented yet");
-  }
+    // TODO: Implement the scanning-based matching strategy here. Iterate from left to right over
+    // the
+    // input, determine the best matching token at each position, and collect all resulting
+    // highlight
+    // regions in order.
+    @Override
+    public List<HighlightRegion> collectMatches(String text) {
+        throw new UnsupportedOperationException("not implemented yet");
+    }
 
-  // TODO: Implement the identity function here.
-  @Override
-  public List<HighlightRegion> normalize(List<HighlightRegion> candidates) {
-    throw new UnsupportedOperationException("not implemented yet");
-  }
+    // TODO: Implement the identity function here.
+    @Override
+    public List<HighlightRegion> normalize(List<HighlightRegion> candidates) {
+        throw new UnsupportedOperationException("not implemented yet");
+    }
 }
