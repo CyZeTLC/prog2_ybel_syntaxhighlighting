@@ -66,7 +66,7 @@ test {
 
 spotless {
     java {
-        googleJavaFormat().reflowLongStrings()
+        googleJavaFormat().reflowLongStrings().aosp()
 
         target '**/*.java'
         targetExclude('build/generated-src/**')
