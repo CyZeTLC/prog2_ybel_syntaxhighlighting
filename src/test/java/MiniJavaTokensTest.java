@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import highlighting.presets.MiniJavaColours;
 import highlighting.presets.MiniJavaTokens;
 import highlighting.regex.Token;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +30,13 @@ class MiniJavaTokensTest {
 
     private Pattern findPatternByColour(List<Token> tokens, Color colour) {
         return tokens.stream()
-            .filter(t -> t.colour().equals(colour))
-            .map(Token::pattern)
-            .findFirst()
-            .orElseThrow(() -> new AssertionError("Pattern fuer Farbe " + colour + " nicht gefunden"));
+                .filter(t -> t.colour().equals(colour))
+                .map(Token::pattern)
+                .findFirst()
+                .orElseThrow(
+                        () ->
+                                new AssertionError(
+                                        "Pattern fuer Farbe " + colour + " nicht gefunden"));
     }
 
     private List<Integer> getMatchIndices(Pattern pattern, String text) {
