@@ -18,6 +18,9 @@ public final class MiniJavaTokens {
     // pattern can be selected as the "highlighted" region.
     public static List<Token> defaultTokens() {
         return List.of(
+                // Line comments
+                Token.of(Pattern.compile("//.*"), MiniJavaColours.LINE_COMMENT_COLOUR),
+
                 // annotations, comments, identifiers, numbers, operators, etc.
                 Token.of(
                         Pattern.compile("\"([^\"\\\\]|\\\\.)*\""),
@@ -46,9 +49,6 @@ public final class MiniJavaTokens {
                 // Block comments
                 Token.of(
                         Pattern.compile("/\\*([\\s\\S]*?)\\*/"),
-                        MiniJavaColours.BLOCK_COMMENT_COLOUR),
-
-                // Line comments
-                Token.of(Pattern.compile("//.*"), MiniJavaColours.LINE_COMMENT_COLOUR));
+                        MiniJavaColours.BLOCK_COMMENT_COLOUR));
     }
 }

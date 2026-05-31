@@ -1,7 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import highlighting.presets.MiniJavaColours;
 import highlighting.presets.MiniJavaTokens;
 import highlighting.regex.Token;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,7 +12,7 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MiniJavaTokensValidationTest {
+class MiniJavaTokensTest {
 
     private Pattern keywordPattern;
     private Pattern annotationPattern;
@@ -19,10 +22,19 @@ class MiniJavaTokensValidationTest {
     @BeforeEach
     void setUp() {
         List<Token> tokens = MiniJavaTokens.defaultTokens();
-        stringPattern = tokens.get(0).pattern();
-        keywordPattern = tokens.get(3).pattern();
-        annotationPattern = tokens.get(4).pattern();
-        lineCommentPattern = tokens.get(7).pattern();
+
+        stringPattern = findPatternByColour(tokens, MiniJavaColours.STRING_LITERAL_COLOUR);
+        keywordPattern = findPatternByColour(tokens, MiniJavaColours.KEYWORD_COLOUR);
+        annotationPattern = findPatternByColour(tokens, MiniJavaColours.ANNOTATION_COLOUR);
+        lineCommentPattern = findPatternByColour(tokens, MiniJavaColours.LINE_COMMENT_COLOUR);
+    }
+
+    private Pattern findPatternByColour(List<Token> tokens, Color colour) {
+        return tokens.stream()
+            .filter(t -> t.colour().equals(colour))
+            .map(Token::pattern)
+            .findFirst()
+            .orElseThrow(() -> new AssertionError("Pattern fuer Farbe " + colour + " nicht gefunden"));
     }
 
     private List<Integer> getMatchIndices(Pattern pattern, String text) {
