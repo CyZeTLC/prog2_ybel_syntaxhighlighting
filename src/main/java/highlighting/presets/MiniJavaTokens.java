@@ -18,11 +18,6 @@ public final class MiniJavaTokens {
     // pattern can be selected as the "highlighted" region.
     public static List<Token> defaultTokens() {
         return List.of(
-                // Example: string literals (students should define further tokens below)
-                Token.of(
-                        Pattern.compile("\"([^\"\\\\]|\\\\.)*\""),
-                        MiniJavaColours.STRING_LITERAL_COLOUR),
-
                 // Line comments
                 Token.of(Pattern.compile("//.*"), MiniJavaColours.LINE_COMMENT_COLOUR),
 
@@ -38,7 +33,7 @@ public final class MiniJavaTokens {
                 // Keywords
                 Token.of(
                         Pattern.compile(
-                                "\\b(class|public|private|protected|static|final|void|int|boolean|char|if|else|while|for|return|new|this|null|true|false|extends|implements|interface|abstract|try|catch|finally|throw|throws|switch|case|break|continue|default)\\b"),
+                                "\\b(package|import|class|public|private|protected|static|final|void|int|boolean|char|if|else|while|for|return|new|this|null|true|false|extends|implements|interface|abstract|try|catch|finally|throw|throws|switch|case|break|continue|default)\\b"),
                         MiniJavaColours.KEYWORD_COLOUR),
 
                 // Annotations
